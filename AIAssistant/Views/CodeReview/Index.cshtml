@@ -1,0 +1,17 @@
+﻿@model CodeReviewResult
+
+<h2>Code Review and Optimization Assistant</h2>
+
+@using (Html.BeginForm("SubmitCode", "CodeReview", FormMethod.Post))
+{
+    @Html.TextAreaFor(m => m.Code, new { rows = 10, cols = 80 })
+    @Html.ValidationMessageFor(m => m.Code)
+    <br />
+    <input type="submit" value="Submit" />
+}
+
+@if (!string.IsNullOrEmpty(Model?.ReviewText))
+{
+    <h3>Code Review:</h3>
+    <p>@Model.ReviewText</p>
+}
